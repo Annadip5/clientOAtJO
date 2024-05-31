@@ -487,9 +487,9 @@ class Football {
         resultsText.textWrapping = true;
         resultsText.paddingTop = 20;
 
-        results.forEach((result, index) => {
-            resultsText.text += `Blue team : ${this.ballFoot.scoreBlue} | Red team : ${this.ballFoot.scoreRed}\n`;
-        });
+        //results.forEach((result, index) => {
+        resultsText.text += `Blue team : ${this.ballFoot.scoreBlue} | Red team : ${this.ballFoot.scoreRed}\n`;
+        //});
 
         resultsRectangle.addControl(resultsText);
         advancedTexture.addControl(resultsRectangle);
