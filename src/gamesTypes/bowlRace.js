@@ -10,6 +10,7 @@ import Decors from "../arenas/decors";
 import WallCreator from "../managers/wallCreator";
 import ArrowsManager from "../managers/arrows";
 import ZoneSableManager from "../managers/zoneSableManager";
+import SandMalusManager from "../managers/sandMalusManager";
 
 import winSoundUrl from "../../assets/sounds/win.mp3"
 import decompteUrl from "../../assets/sounds/decompte.mp3"
@@ -29,7 +30,7 @@ class Game {
     #gameScene;
 
     #shadowGenerator;
-    #bInspector = true;
+    #bInspector = false;
 
     x
     inputMap = {};
@@ -159,7 +160,8 @@ class Game {
         this.#shadowGenerator.addShadowCaster(this.#playerEntities[this.#room.sessionId].gameObject, true);
         //this.#zoneSableManage = new ZoneSableManager(this.#gameScene, this.#playerEntities[this.#room.sessionId], this.#arena);
 
-
+        this.#zoneSableManage = new SandMalusManager(this.#gameScene, this.#playerEntities[this.#room.sessionId], this.#arena);
+        this.#zoneSableManage.createArrowsSand()
         this.initInput();
 
 

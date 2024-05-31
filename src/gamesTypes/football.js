@@ -488,7 +488,7 @@ class Football {
         resultsText.paddingTop = 20;
 
         results.forEach((result, index) => {
-            resultsText.text += `${index + 1}. ${result.pseudo} - ${this.convertSecondsToMinSec(result.finishChrono)}\n`;
+            resultsText.text += `Blue team : ${this.ballFoot.scoreBlue} | Red team : ${this.ballFoot.scoreRed}\n`;
         });
 
         resultsRectangle.addControl(resultsText);

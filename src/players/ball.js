@@ -34,6 +34,8 @@ class Ball {
         this.createDetectionSquareBlue();
         this.createDetectionSquareRed();
         this.createrespawn([0, -1, 0], [0, 0, 0], [200, 200, 10])
+        this.setupNetworkHandlers();
+
     }
     createrespawn(positions, rotations, taille) {
         this.redRectangle = Mesh.CreateGround("redRectangle", taille[0], taille[1], taille[2], this.scene);
@@ -56,14 +58,15 @@ class Ball {
                     if (this.sifflet.isReady()) {
                         this.sifflet.play();
                     }
-                    this.mesh.dispose();
+                    this.room.send("RESPAWN");
+                    /*this.mesh.dispose();
                     this.mesh = this.createFootball(this.scene);
                     this.rectangle_r.dispose();
                     this.rectangle_b.dispose();
                     this.createDetectionSquareBlue();
                     this.createDetectionSquareRed();
                     this.redRectangle.dispose();
-                    this.createrespawn([0, -1, 0], [0, 0, 0], [200, 200, 10])
+                    this.createrespawn([0, -1, 0], [0, 0, 0], [200, 200, 10])*/
 
                 }
             )
@@ -113,8 +116,9 @@ class Ball {
                     if (this.sifflet.isReady()) {
                         this.sifflet.play();
                     }
-                    this.scoreRed += 1;
+                    this.room.send("BUTR")
                     this.room.send("scoreRedIncr", this.scoreRed)
+                    /*this.scoreRed += 1;
                     this.mesh.dispose();
                     this.mesh = this.createFootball(this.scene);
                     this.rectangle_r.dispose();
@@ -123,7 +127,7 @@ class Ball {
                     this.createDetectionSquareRed();
                     this.redRectangle.dispose();
                     this.createrespawn([0, -1, 0], [0, 0, 0], [200, 200, 10])
-                    this.updateScoreText();
+                    this.updateScoreText();*/
                 }
             )
         );
@@ -157,8 +161,9 @@ class Ball {
                     if (this.sifflet.isReady()) {
                         this.sifflet.play();
                     }
-                    this.scoreBlue += 1;
-                    this.room.send("scoreBlueIncr", this.scoreBlue)
+                    this.room.send("scoreBlueIncr", this.scoreBlue);
+                    this.room.send("BUTB");
+                    /*this.scoreBlue += 1;
                     this.mesh.dispose();
                     this.mesh = this.createFootball(this.scene);
                     this.rectangle_r.dispose();
@@ -167,7 +172,7 @@ class Ball {
                     this.createDetectionSquareRed();
                     this.redRectangle.dispose();
                     this.createrespawn([0, -1, 0], [0, 0, 0], [200, 200, 10])
-                    this.updateScoreText()
+                    this.updateScoreText()*/
 
 
 
@@ -191,33 +196,50 @@ class Ball {
 
     }
 
-    /*createScoreText() {
-        const advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI("ScoreUI");
 
-        this.scoreTextRed = new TextBlock();
-        this.scoreTextRed.text = "Red: 0";
-        this.scoreTextRed.color = "red";
-        this.scoreTextRed.fontSize = 24;
-        this.scoreTextRed.horizontalAlignment = TextBlock.HORIZONTAL_ALIGNMENT_LEFT;
-        this.scoreTextRed.verticalAlignment = TextBlock.VERTICAL_ALIGNMENT_TOP;
-        this.scoreTextRed.top = "10px";
-        this.scoreTextRed.left = "10px";
-
-        this.scoreTextBlue = new TextBlock();
-        this.scoreTextBlue.text = "Blue: 0";
-        this.scoreTextBlue.color = "blue";
-        this.scoreTextBlue.fontSize = 24;
-        this.scoreTextBlue.horizontalAlignment = TextBlock.HORIZONTAL_ALIGNMENT_LEFT;
-        this.scoreTextBlue.verticalAlignment = TextBlock.VERTICAL_ALIGNMENT_TOP;
-        this.scoreTextBlue.top = "40px";
-        this.scoreTextBlue.left = "10px";
-
-        advancedTexture.addControl(this.scoreTextRed);
-        advancedTexture.addControl(this.scoreTextBlue);
-    }*/
     updateScoreText() {
         this.scoreTextR.text = `Red: ${this.scoreRed}`;
         this.scoreTextB.text = `Blue: ${this.scoreBlue}`;
+    }
+
+    setupNetworkHandlers() {
+        this.room.onMessage("BUTBroadcastR", (message) => {
+            this.scoreRed += 1;
+            this.mesh.dispose();
+            this.mesh = this.createFootball(this.scene);
+            this.rectangle_r.dispose();
+            this.rectangle_b.dispose();
+            this.createDetectionSquareBlue();
+            this.createDetectionSquareRed();
+            this.redRectangle.dispose();
+            this.createrespawn([0, -1, 0], [0, 0, 0], [200, 200, 10])
+            this.updateScoreText();
+        });
+        this.room.onMessage("BUTBroadcastB", (message) => {
+
+
+            this.scoreBlue += 1;
+            this.mesh.dispose();
+            this.mesh = this.createFootball(this.scene);
+            this.rectangle_r.dispose();
+            this.rectangle_b.dispose();
+            this.createDetectionSquareBlue();
+            this.createDetectionSquareRed();
+            this.redRectangle.dispose();
+            this.createrespawn([0, -1, 0], [0, 0, 0], [200, 200, 10])
+            this.updateScoreText()
+        });
+        this.room.onMessage("respawnServer", (message) => {
+            this.mesh.dispose();
+            this.mesh = this.createFootball(this.scene);
+            this.rectangle_r.dispose();
+            this.rectangle_b.dispose();
+            this.createDetectionSquareBlue();
+            this.createDetectionSquareRed();
+            this.redRectangle.dispose();
+            this.createrespawn([0, -1, 0], [0, 0, 0], [200, 200, 10])
+        })
+
     }
 
 }
