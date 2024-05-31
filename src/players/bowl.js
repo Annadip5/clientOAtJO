@@ -231,6 +231,7 @@ class Player {
         let currentVelocity = this.capsuleAggregate.body.getLinearVelocity();
         const camera1 = this.camera;
         var forwardDirection = camera1.getForwardRay().direction;
+
         //debug
         if (inputMap["KeyG"]) {
             this.grow()

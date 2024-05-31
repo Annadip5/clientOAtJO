@@ -9,13 +9,13 @@ import Arena from "../arenas/pistCourse";
 import Decors from "../arenas/decors";
 import WallCreator from "../managers/wallCreator";
 import ArrowsManager from "../managers/arrows";
+import ZoneSableManager from "../managers/zoneSableManager";
 
 import winSoundUrl from "../../assets/sounds/win.mp3"
 import decompteUrl from "../../assets/sounds/decompte.mp3"
 import decompteUrl2 from "../../assets/sounds/decompte2.mp3"
 import readyUrl from "../../assets/sounds/ready.mp3"
 import backgroundMusicUrl from "../../assets/sounds/musiqueRace.mp3";
-import Combat from "./combat";
 
 
 class Game {
@@ -43,6 +43,7 @@ class Game {
     #gameType;
     delta;
     #decors;
+    #zoneSableManage;
 
     startTime;
     isAllPlayerReady = false;
@@ -156,7 +157,7 @@ class Game {
 
 
         this.#shadowGenerator.addShadowCaster(this.#playerEntities[this.#room.sessionId].gameObject, true);
-
+        //this.#zoneSableManage = new ZoneSableManager(this.#gameScene, this.#playerEntities[this.#room.sessionId], this.#arena);
 
 
         this.initInput();

@@ -34,11 +34,11 @@ class ArenaFootball {
         skyboxMaterial.diffuseColor = new Color3(0, 0, 0);
         skyboxMaterial.specularColor = new Color3(0, 0, 0);
 
-// Ajustement de l'échelle de la texture pour couvrir une face entière du skybox
-skyboxMaterial.reflectionTexture.uScale = -1; // Inverse l'échelle horizontale pour éviter les effets de miroir
-skyboxMaterial.reflectionTexture.vScale = 1; // Laisse l'échelle verticale à 1 pour ne pas étirer la texture
+        // Ajustement de l'échelle de la texture pour couvrir une face entière du skybox
+        skyboxMaterial.reflectionTexture.uScale = -1; // Inverse l'échelle horizontale pour éviter les effets de miroir
+        skyboxMaterial.reflectionTexture.vScale = 1; // Laisse l'échelle verticale à 1 pour ne pas étirer la texture
 
-skybox.material = skyboxMaterial;
+        skybox.material = skyboxMaterial;
         //console.log(result);
         this.gameObject = result.meshes[0];
         this.gameObject.name = "arena";

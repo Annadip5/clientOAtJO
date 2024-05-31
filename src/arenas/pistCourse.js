@@ -11,9 +11,7 @@ class Arena {
     gameObject;
     meshAggregate
     zoneSable;
-    zonePiste;
-    zoneA;
-    zoneB;
+
 
 
 
@@ -69,30 +67,16 @@ class Arena {
         zoneMat.diffuseTexture = new Texture("../assets/images/sable-texture.jpg");
         this.zoneSable.material = zoneMat;
 
+
     }
 
-    setCollisionZones(playerMesh) {
-        this.zoneSable.actionManager = new ActionManager(this.scene);
-        this.zoneSable.actionManager.registerAction(
-            new ExecuteCodeAction(
-                {
-                    trigger: ActionManager.OnIntersectionEnterTrigger,
-                    parameter: playerMesh,
-                },
-                (actionEv) => {
-                    //this.actionOnPlayer(playerMesh);
-                    console.log("actionManager sable ");
-                }
-            )
-        );
-    }
-    actionOnPlayer(playerMesh) {
-        //console.log("collision detected");
-        playerMesh.speedZ = 0;
-        playerMesh.speedX = 0;
+    isInZoneSable(playerPosition) {
+        return this.zoneSable.getBoundingInfo().boundingBox.intersectsPoint(playerPosition);
     }
 
-
+    isInZonePiste(playerPosition) {
+        return this.zonePiste.getBoundingInfo().boundingBox.intersectsPoint(playerPosition);
+    }
     update(delta) {
 
     }
