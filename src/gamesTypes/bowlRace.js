@@ -80,7 +80,7 @@ class Game {
         const skybox = MeshBuilder.CreateBox("skyBox", { size: 700 }, scene);
         const skyboxMaterial = new StandardMaterial("skyBox", scene);
         skyboxMaterial.backFaceCulling = false;
-        skyboxMaterial.reflectionTexture = new CubeTexture("../assets/images/JOchargement", scene);
+        skyboxMaterial.reflectionTexture = new CubeTexture("../assets/images/yellowcloud", scene);
         skyboxMaterial.reflectionTexture.coordinatesMode = Texture.SKYBOX_MODE;
         skyboxMaterial.diffuseColor = new Color3(0, 0, 0);
         skyboxMaterial.specularColor = new Color3(0, 0, 0);
@@ -100,9 +100,9 @@ class Game {
         this.#shadowGenerator.useBlurExponentialShadowMap = true;
 
 
-        let boxDebug = MeshBuilder.CreateSphere("boxDebug", { size: 2 });
+        /* let boxDebug = MeshBuilder.CreateSphere("boxDebug", { size: 2 });
         boxDebug.position = new Vector3(5, 15, 0);
-        this.#shadowGenerator.addShadowCaster(boxDebug);
+        this.#shadowGenerator.addShadowCaster(boxDebug); */
 
         this.#winSound = new Sound("win", winSoundUrl, this.#gameScene);
         this.#decompteSound = new Sound("decompte", decompteUrl, this.#gameScene);

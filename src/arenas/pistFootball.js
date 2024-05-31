@@ -26,10 +26,10 @@ class ArenaFootball {
     async init() {
 
         const result = await SceneLoader.ImportMeshAsync("", "", arenaModelUrl, this.scene);
-        const skybox = MeshBuilder.CreateBox("skyBox", { size: 300 }, this.scene);
+        const skybox = MeshBuilder.CreateBox("skyBox", { size: 200 }, this.scene);
         const skyboxMaterial = new StandardMaterial("skyBox", this.scene);
         skyboxMaterial.backFaceCulling = false;
-        skyboxMaterial.reflectionTexture = new CubeTexture("../assets/images/etoiles", this.scene);
+        skyboxMaterial.reflectionTexture = new CubeTexture("../assets/images/redeclipse", this.scene);
         skyboxMaterial.reflectionTexture.coordinatesMode = Texture.SKYBOX_MODE;
         skyboxMaterial.diffuseColor = new Color3(0, 0, 0);
         skyboxMaterial.specularColor = new Color3(0, 0, 0);

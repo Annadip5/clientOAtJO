@@ -27,7 +27,8 @@ class Decors {
         this.gameObject = result.meshes[0];
         this.gameObject.name = "notreDame";
         this.gameObject.setParent(null);
-        this.gameObject.position = new Vector3(-220, -20, -10);
+        this.gameObject.rotation = new Vector3(0, -0.5, 0);
+        this.gameObject.position = new Vector3(-220, -50, -10);
         this.gameObject.scaling = new Vector3(0.1, 0.1, 0.1);
         this.addDirectionalLight();
     }
@@ -37,7 +38,8 @@ class Decors {
         this.gameObject = result.meshes[0];
         this.gameObject.name = "arcTriomphe";
         this.gameObject.setParent(null);
-        this.gameObject.position = new Vector3(-70, -10, -20);
+        this.gameObject.rotation = new Vector3(0, 2, 0);
+        this.gameObject.position = new Vector3(-90, -5, -2);
         this.gameObject.scaling = new Vector3(2, 2, 2);
         this.addDirectionalLight();
     }

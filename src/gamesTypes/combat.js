@@ -76,6 +76,14 @@ class Combat {
 
     createScene() {
         const scene = new Scene(this.#engine);
+        const skybox = MeshBuilder.CreateBox("skyBox", { size: 700 }, scene);
+        const skyboxMaterial = new StandardMaterial("skyBox", scene);
+        skyboxMaterial.backFaceCulling = false;
+        skyboxMaterial.reflectionTexture = new CubeTexture("../assets/images/corona", scene);
+        skyboxMaterial.reflectionTexture.coordinatesMode = Texture.SKYBOX_MODE;
+        skyboxMaterial.diffuseColor = new Color3(0, 0, 0);
+        skyboxMaterial.specularColor = new Color3(0, 0, 0);
+        skybox.material = skyboxMaterial;
         scene.collisionsEnabled = true;
 
         const hk = new HavokPlugin(true, this.#havokInstance);
@@ -91,9 +99,9 @@ class Combat {
         this.#shadowGenerator.useBlurExponentialShadowMap = true;
 
 
-        let boxDebug = MeshBuilder.CreateSphere("boxDebug", { size: 2 });
+        /* let boxDebug = MeshBuilder.CreateSphere("boxDebug", { size: 2 });
         boxDebug.position = new Vector3(5, 15, 0);
-        this.#shadowGenerator.addShadowCaster(boxDebug);
+        this.#shadowGenerator.addShadowCaster(boxDebug); */
 
         this.#winSound = new Sound("win", winSoundUrl, this.#gameScene);
         this.#decompteSound = new Sound("decompte", decompteUrl, this.#gameScene);

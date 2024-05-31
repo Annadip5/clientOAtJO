@@ -16,6 +16,7 @@ body {
     background-image: url('../../assets/images/anneaux-4.png');
     /* Chemin de l'image de fond */
     background-size: cover;
+    background-color: lightblue;
     /* Ajuste la taille de l'image pour couvrir tout l'arrière-plan */
     background-repeat: no-repeat;
     /* Empêche la répétition de l'image */

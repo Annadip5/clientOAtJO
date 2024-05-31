@@ -97,9 +97,9 @@ class Football {
         this.#shadowGenerator.useBlurExponentialShadowMap = true;
 
 
-        let boxDebug = MeshBuilder.CreateSphere("boxDebug", { size: 2 });
+        /* let boxDebug = MeshBuilder.CreateSphere("boxDebug", { size: 2 });
         boxDebug.position = new Vector3(5, 15, 0);
-        this.#shadowGenerator.addShadowCaster(boxDebug);
+        this.#shadowGenerator.addShadowCaster(boxDebug); */
 
         this.#winSound = new Sound("win", winSoundUrl, this.#gameScene);
         this.#decompteSound = new Sound("decompte", decompteUrl, this.#gameScene);
