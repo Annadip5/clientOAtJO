@@ -6,20 +6,36 @@ class SandMalusManager {
     localPlayer;
     room
     greenRects = [
-        { position: [-50, 0.1, 16], rotation: [0, 0, 0], taille: [90, 7, 1] },
-        { position: [-130, 0.1, 28], rotation: [0, 0, 0], taille: [10, 10, 1] },
+        { position: [-115, 0.1, 16], rotation: [0, 0, 0], taille: [70, 7, 1] },
+        { position: [-115, 0.1, 33.5], rotation: [0, 0, 0], taille: [200, 5, 1] },
+        { position: [-115, 0.1, -102], rotation: [0, 0, 0], taille: [200, 5, 1] },
+        { position: [-115, 0.1, -84], rotation: [0, 0, 0], taille: [70, 7, 1] },
 
+        { position: [0.7, 0.1, -35], rotation: [0, Math.PI / 2, 0], taille: [13, 5, 1] },
+        //{ position: [-3, 0.1, -13], rotation: [0, Math.PI / 3, 0], taille: [7, 4, 1] },
+        //{ position: [-3.2, 0.1, -57], rotation: [0, -Math.PI / 3, 0], taille: [7, 4, 1] },
+        //{ position: [-15, 0.1, 3], rotation: [0, Math.PI / 4, 0], taille: [10, 3, 1] },
+        //{ position: [-15.2, 0.1, -73], rotation: [0, -Math.PI / 4, 0], taille: [10, 3, 1] },
 
+        { position: [19, 0.1, -35], rotation: [0, Math.PI / 2, 0], taille: [24, 5, 1] },
+        //{ position: [16, 0.1, -13], rotation: [0, Math.PI / 3, 0], taille: [7, 4, 1] },
+        //{ position: [16.2, 0.1, -57], rotation: [0, -Math.PI / 3, 0], taille: [7, 4, 1] },
+        //{ position: [7, 0.1, 3], rotation: [0, Math.PI / 3, 0], taille: [12, 3, 1] },
+        //{ position: [7.2, 0.1, -73], rotation: [0, -Math.PI / 3, 0], taille: [12, 3, 1] },
+
+        { position: [-228.3, 0.1, -35], rotation: [0, Math.PI / 2, 0], taille: [10, 5, 1] },
+        //{ position: [-243, 0.1, -13], rotation: [0,  (2*Math.PI) / 3.2, 0], taille: [7, 4, 1] },
+        //{ position: [-243, 0.1, -57], rotation: [0,  (-2*Math.PI)/ 3.2, 0], taille: [7, 4, 1] },
+        //{ position: [-234, 0.1, 3], rotation: [0, (2*Math.PI) / 3, 0], taille: [10, 3, 1] },
+        //{ position: [-234.2, 0.1, -73], rotation: [0,  (-2*Math.PI) / 3, 0], taille: [10, 3, 1] },
+
+        { position: [-246, 0.1, -35], rotation: [0, Math.PI / 2, 0], taille: [24, 5, 1] },
+        //{ position: [-224, 0.1, -13], rotation: [0, (2*Math.PI) / 3.2, 0], taille: [7, 4, 1] },
+        //{ position: [-224, 0.1, -57], rotation: [0, (-2*Math.PI) / 3.2, 0], taille: [7, 4, 1] },  
+        //{ position: [-212, 0.1, 3], rotation: [0,(2*Math.PI) / 2.55, 0], taille: [10, 3, 1] },
+        //{ position: [-212.2, 0.1, -73], rotation: [0, (-2*Math.PI) / 2.55, 0], taille: [10, 3, 1] }
     ];
-    redRects = [
 
-        { position: [-100, 0.1, -94], rotation: [0, 0, 0], taille: [4, 2, 1] },
-        { position: [-100, 0.1, 29.3], rotation: [0, 0, 0], taille: [4, 2, 1] },
-        { position: [-230, 0.1, -6], rotation: [0, Math.PI / 4, 0], taille: [3, 7, 1] },
-        { position: [-130, 0.1, 21], rotation: [0, 0, 0], taille: [4, 2, 1] },
-
-        /*{ finish: "finish" }*/
-    ];
 
     constructor(scene, localPlayer, room) {
         this.scene = scene;
@@ -37,6 +53,7 @@ class SandMalusManager {
         greenRectangle.checkCollisions = true;
         greenRectangle.material.alpha = 0.5;
         greenRectangle.actionManager = new ActionManager(this.scene);
+        greenRectangle.isVisible = false;
 
         greenRectangle.actionManager.registerAction(
             new ExecuteCodeAction(
@@ -46,6 +63,7 @@ class SandMalusManager {
                 },
                 () => {
                     this.localPlayer.setRunningSpeed(5);
+                    this.localPlayer.setJumpImpulse(2);
 
 
                 }
@@ -61,6 +79,7 @@ class SandMalusManager {
                 () => {
                     // Ensure the speed is reset when exiting the rectangle
                     this.localPlayer.setRunningSpeed(14);
+                    this.localPlayer.setJumpImpulse(6);
                 }
             )
         );
