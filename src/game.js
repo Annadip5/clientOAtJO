@@ -6,7 +6,9 @@ import Football from "./gamesTypes/football";
 const Colyseus = require('colyseus.js');
 
 
-const client = new Colyseus.Client('ws://localhost:2567');
+//const client = new Colyseus.Client('ws://localhost:2567');
+const client = new Colyseus.Client('wss://serveroatjo.onrender.com');
+
 
 let canvas;
 let engine;
