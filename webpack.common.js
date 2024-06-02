@@ -58,6 +58,10 @@ module.exports = {
                 ],
                 type: 'javascript/auto'
             },
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"],
+            },
         ],
     },
     plugins: [
