@@ -18,6 +18,14 @@ import decompteUrl2 from "../../assets/sounds/decompte2.mp3"
 import readyUrl from "../../assets/sounds/ready.mp3"
 import backgroundMusicUrl from "../../assets/sounds/musiqueRace.mp3";
 
+//skyBox
+import skybox_nz from "../../assets/images/bowlRaceSky/yellowcloud_nz.jpg";
+import skybox_py from "../../assets/images/bowlRaceSky/yellowcloud_py.jpg";
+import skybox_px from "../../assets/images/bowlRaceSky/yellowcloud_px.jpg";
+import skybox_pz from "../../assets/images/bowlRaceSky/yellowcloud_pz.jpg";
+import skybox_ny from "../../assets/images/bowlRaceSky/yellowcloud_ny.jpg";
+import skybox_nx from "../../assets/images/bowlRaceSky/yellowcloud_nx.jpg";
+
 
 class Game {
     canStart = false;
@@ -82,7 +90,17 @@ class Game {
         const skybox = MeshBuilder.CreateBox("skyBox", { size: 700 }, scene);
         const skyboxMaterial = new StandardMaterial("skyBox", scene);
         skyboxMaterial.backFaceCulling = false;
-        skyboxMaterial.reflectionTexture = new CubeTexture("../assets/images/yellowcloud", scene);
+        const files = [
+            skybox_nz,
+            skybox_py,
+            skybox_px,
+            skybox_pz,
+            skybox_ny,
+            skybox_nx
+        ];
+
+
+        skyboxMaterial.reflectionTexture = new CubeTexture("", scene, null, false, files);
         skyboxMaterial.reflectionTexture.coordinatesMode = Texture.SKYBOX_MODE;
         skyboxMaterial.diffuseColor = new Color3(0, 0, 0);
         skyboxMaterial.specularColor = new Color3(0, 0, 0);

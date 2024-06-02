@@ -16,6 +16,12 @@ import decompteUrl2 from "../../assets/sounds/decompte2.mp3"
 import readyUrl from "../../assets/sounds/ready.mp3"
 import backgroundMusicUrl from "../../assets/sounds/eyeTiger.mp3";
 
+import skybox_nz from "../../assets/images/combatSky/corona_nz.jpg";
+import skybox_py from "../../assets/images/combatSky/corona_py.jpg";
+import skybox_px from "../../assets/images/combatSky/corona_px.jpg";
+import skybox_pz from "../../assets/images/combatSky/corona_pz.jpg";
+import skybox_ny from "../../assets/images/combatSky/corona_ny.jpg";
+import skybox_nx from "../../assets/images/combatSky/corona_nx.jpg";
 
 class Combat {
     canStart = false;
@@ -79,7 +85,17 @@ class Combat {
         const skybox = MeshBuilder.CreateBox("skyBox", { size: 700 }, scene);
         const skyboxMaterial = new StandardMaterial("skyBox", scene);
         skyboxMaterial.backFaceCulling = false;
-        skyboxMaterial.reflectionTexture = new CubeTexture("../assets/images/corona", scene);
+        const files = [
+            skybox_nz,
+            skybox_py,
+            skybox_px,
+            skybox_pz,
+            skybox_ny,
+            skybox_nx
+        ];
+
+
+        skyboxMaterial.reflectionTexture = new CubeTexture("", scene, null, false, files);
         skyboxMaterial.reflectionTexture.coordinatesMode = Texture.SKYBOX_MODE;
         skyboxMaterial.diffuseColor = new Color3(0, 0, 0);
         skyboxMaterial.specularColor = new Color3(0, 0, 0);

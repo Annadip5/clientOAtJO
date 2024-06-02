@@ -1,7 +1,12 @@
 import { ActionManager, Color3, CubeTexture, ExecuteCodeAction, MeshBuilder, NativeXRFrame, PhysicsAggregate, PhysicsMotionType, PhysicsShapeType, SceneLoader, StandardMaterial, Texture, TransformNode, Vector3 } from "@babylonjs/core";
 
 import arenaModelUrl from "../../assets/models/terrainfoot.glb";
-
+import skybox_nz from "../../assets/images/footballSky/redeclipse_nz.jpg";
+import skybox_py from "../../assets/images/footballSky/redeclipse_py.jpg";
+import skybox_px from "../../assets/images/footballSky/redeclipse_px.jpg";
+import skybox_pz from "../../assets/images/footballSky/redeclipse_pz.jpg";
+import skybox_ny from "../../assets/images/footballSky/redeclipse_ny.jpg";
+import skybox_nx from "../../assets/images/footballSky/redeclipse_nx.jpg";
 class ArenaFootball {
     scene;
     x;
@@ -24,21 +29,39 @@ class ArenaFootball {
         this.gameObject.position = new Vector3(0, 0, 0)
     }
     async init() {
-
-        const result = await SceneLoader.ImportMeshAsync("", "", arenaModelUrl, this.scene);
-        const skybox = MeshBuilder.CreateBox("skyBox", { size: 200 }, this.scene);
+        const skybox = MeshBuilder.CreateBox("skyBox", { size: 700 }, this.scene);
         const skyboxMaterial = new StandardMaterial("skyBox", this.scene);
         skyboxMaterial.backFaceCulling = false;
-        skyboxMaterial.reflectionTexture = new CubeTexture("../assets/images/redeclipse", this.scene);
+        const files = [
+            skybox_nz,
+            skybox_py,
+            skybox_px,
+            skybox_pz,
+            skybox_ny,
+            skybox_nx
+        ];
+
+
+        skyboxMaterial.reflectionTexture = new CubeTexture("", this.scene, null, false, files);
         skyboxMaterial.reflectionTexture.coordinatesMode = Texture.SKYBOX_MODE;
         skyboxMaterial.diffuseColor = new Color3(0, 0, 0);
         skyboxMaterial.specularColor = new Color3(0, 0, 0);
+        skybox.material = skyboxMaterial;
+        this.scene.collisionsEnabled = true;
+
+        const result = await SceneLoader.ImportMeshAsync("", "", arenaModelUrl, this.scene);
+
+        /*skyboxMaterial.backFaceCulling = false;
+        skyboxMaterial.reflectionTexture = new CubeTexture("../assets/images/redeclipse", this.scene);
+        skyboxMaterial.reflectionTexture.coordinatesMode = Texture.SKYBOX_MODE;
+        skyboxMaterial.diffuseColor = new Color3(0, 0, 0);
+        skyboxMaterial.specularColor = new Color3(0, 0, 0);*/
 
         // Ajustement de l'échelle de la texture pour couvrir une face entière du skybox
         skyboxMaterial.reflectionTexture.uScale = -1; // Inverse l'échelle horizontale pour éviter les effets de miroir
         skyboxMaterial.reflectionTexture.vScale = 1; // Laisse l'échelle verticale à 1 pour ne pas étirer la texture
 
-        skybox.material = skyboxMaterial;
+        //skybox.material = skyboxMaterial;
         //console.log(result);
         this.gameObject = result.meshes[0];
         this.gameObject.name = "arena";
