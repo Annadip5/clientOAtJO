@@ -39,7 +39,7 @@ module.exports = {
                 exclude: /node_modules/,
             },
             {
-                test: /\.(mp3|wav|ogg|mp4|glb|hdr)$/i,
+                test: /\.(mp3|wav|ogg|mp4|glb|hdr|gif|env|gltf|stl|dds)$/i,
                 use: [
                     {
                         loader: "file-loader",
@@ -47,7 +47,19 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(png|jpg|gif|env|gltf|stl|dds|json)$/i,
+                test: /\.(png|jpg)$/,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'images/',
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.(json)$/i,
                 use: [
                     {
                         loader: "url-loader",
