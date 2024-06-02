@@ -4,6 +4,21 @@ import { ArcRotateCamera, Color3, HighlightLayer, Matrix, Mesh, MeshBuilder, Phy
 import { AdvancedDynamicTexture } from "@babylonjs/gui/2D/advancedDynamicTexture";
 import { TextBlock } from "@babylonjs/gui/2D/controls/textBlock";
 import jumpSoundUrl from "../../assets/sounds/jump.mp3"
+//skins
+import AfriqueSud from "../../assets/images/drapeaux/AfriqueSud.png"
+import Allemagne from "../../assets/images/drapeaux/Allemagne.png"
+import Angleterre from "../../assets/images/drapeaux/Angleterre.png"
+import Bresil from "../../assets/images/drapeaux/Bresil.png"
+import Cameroun from "../../assets/images/drapeaux/Cameroun.png"
+import Canada from "../../assets/images/drapeaux/Canada.png"
+import Chine from "../../assets/images/drapeaux/Chine.png"
+import Espagne from "../../assets/images/drapeaux/Espagne.png"
+import EtatUnis from "../../assets/images/drapeaux/EtatUnis.png"
+import France from "../../assets/images/drapeaux/France.png"
+import Italie from "../../assets/images/drapeaux/Italie.png"
+import Russie from "../../assets/images/drapeaux/Russie.png"
+import Ukraine from "../../assets/images/drapeaux/Ukraine.png"
+
 
 const USE_FORCES = false;
 let RUNNING_SPEED = 14;
@@ -49,7 +64,7 @@ class Player {
     label;
     linkOffsetYlabel = -105;
     points = 0;
-    skins = ["AfriqueSud.png", "Allemagne.png", "Angleterre.png", "Bresil.png", "Cameroun.png", "Canada.png", "Chine.png", "Espagne.png", "EtatUnis.png", "France.png", "Italie.png", "Russie.png", "Ukraine.png"];
+    skins = [AfriqueSud, Allemagne, Angleterre, Bresil, Cameroun, Canada, Chine, Espagne, EtatUnis, France, Italie, Russie, Ukraine];
     clientId;
 
     camera;
@@ -140,7 +155,7 @@ class Player {
 
         if (this.gameObject) {
             const meshMaterial = new StandardMaterial("mesh");
-            meshMaterial.diffuseTexture = new Texture("../assets/images/drapeaux/" + this.skins[this.idCountryFlag]);
+            meshMaterial.diffuseTexture = new Texture(this.skins[this.idCountryFlag]);
             this.gameObject.material = meshMaterial;
             var hl = new HighlightLayer("hl1", this.scene);
             hl.addMesh(this.gameObject, Color3.Green());
@@ -152,7 +167,7 @@ class Player {
         const result = await MeshBuilder.CreateSphere("sphere", { diameter: 1 }, this.scene);
         this.gameObject = result;
         const meshMaterial = new StandardMaterial("mesh");
-        meshMaterial.diffuseTexture = new Texture("../assets/images/drapeaux/" + this.skins[this.idCountryFlag]);
+        meshMaterial.diffuseTexture = new Texture(this.skins[this.idCountryFlag]);
         this.gameObject.material = meshMaterial;
 
         this.gameObject.scaling = new Vector3(1, 1, 1);

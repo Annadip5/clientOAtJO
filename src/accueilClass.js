@@ -1,8 +1,23 @@
+//skins
+import AfriqueSud from "../assets/images/drapeaux/AfriqueSud.png"
+import Allemagne from "../assets/images/drapeaux/Allemagne.png"
+import Angleterre from "../assets/images/drapeaux/Angleterre.png"
+import Bresil from "../assets/images/drapeaux/Bresil.png"
+import Cameroun from "../assets/images/drapeaux/Cameroun.png"
+import Canada from "../assets/images/drapeaux/Canada.png"
+import Chine from "../assets/images/drapeaux/Chine.png"
+import Espagne from "../assets/images/drapeaux/Espagne.png"
+import EtatUnis from "../assets/images/drapeaux/EtatUnis.png"
+import France from "../assets/images/drapeaux/France.png"
+import Italie from "../assets/images/drapeaux/Italie.png"
+import Russie from "../assets/images/drapeaux/Russie.png"
+import Ukraine from "../assets/images/drapeaux/Ukraine.png"
+
 class Accueil {
     pseudo;
     type;
     indice;
-    skins = ["AfriqueSud.png", "Allemagne.png", "Angleterre.png", "Bresil.png", "Cameroun.png", "Canada.png", "Chine.png", "Espagne.png", "EtatUnis.png", "France.png", "Italie.png", "Russie.png", "Ukraine.png"];
+    skins = [AfriqueSud, Allemagne, Angleterre, Bresil, Cameroun, Canada, Chine, Espagne, EtatUnis, France, Italie, Russie, Ukraine];
     photo;
     fleche_g;
     fleche_d;
@@ -53,7 +68,7 @@ class Accueil {
                 self.indice = 0;
             }
             console.log("Droite");
-            self.photo.setAttribute("src", "../assets/images/drapeaux/" + self.skins[self.indice]);
+            self.photo.setAttribute("src", self.skins[self.indice]);
         };
 
         this.fleche_g.onclick = function () {
@@ -62,7 +77,7 @@ class Accueil {
                 self.indice = self.skins.length - 1;
             }
             console.log("Gauche");
-            self.photo.setAttribute("src", "../assets/images/drapeaux/" + self.skins[self.indice]);
+            self.photo.setAttribute("src", self.skins[self.indice]);
         };
     }
 }
