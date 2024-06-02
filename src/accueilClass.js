@@ -25,6 +25,16 @@ class Accueil {
         function handleForm(event) {
             event.preventDefault();
             self.pseudo = document.getElementById('pseudo').value;
+            const pseudoInput = document.getElementById('pseudo');
+            if (self.pseudo.length < 3) {
+                pseudoInput.style.borderColor = 'red';
+                pseudoInput.value = '';
+                pseudoInput.placeholder = 'Pseudo à 3 caractères minimum';
+                return;
+            } else {
+                pseudoInput.style.borderColor = 'green';
+                pseudoInput.placeholder = '';
+            }
             console.log("Pseudo:", self.pseudo);
             console.log("Indice:", self.indice);
 
