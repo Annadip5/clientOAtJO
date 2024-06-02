@@ -2,6 +2,7 @@ import { ActionManager, ArcRotateCamera, Color3, ExecuteCodeAction, HighlightLay
 import { AdvancedDynamicTexture, Rectangle, TextBlock } from "@babylonjs/gui";
 import but from "../../assets/sounds/sifflet.mp3";
 import but2 from "../../assets/sounds/but2.mp3";
+import ballonTexture from "../../assets/images/textures/ballon-texture.jpg";
 
 
 
@@ -77,7 +78,7 @@ class Ball {
         this.sifflet = new Sound("win", but, this.scene);
         ball.position = new Vector3(this.x, this.y, this.z); // Position initiale de la balle
         const ballMaterial = new StandardMaterial("footballMaterial", scene);
-        ballMaterial.diffuseTexture = new Texture("../assets/images/ballon-texture.jpg", scene);
+        ballMaterial.diffuseTexture = new Texture(ballonTexture, scene);
         ball.material = ballMaterial;
         //this.shadowGenerator.addShadowCaster(ball);
         this.meshAggregate = new PhysicsAggregate(ball, PhysicsShapeType.SPHERE, { mass: 0.7, restitution: 0.8 }, scene);
