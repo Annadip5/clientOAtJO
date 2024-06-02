@@ -1,6 +1,7 @@
 import { ActionManager, Color3, ExecuteCodeAction, NativeXRFrame, PhysicsAggregate, PhysicsMotionType, PhysicsShapeType, SceneLoader, StandardMaterial, Texture, TransformNode, Vector3 } from "@babylonjs/core";
 
 import arenaModelUrl from "../../assets/models/piste_course4.glb";
+import sableTexture from "../../assets/images/textures/sable-texture.jpg"
 
 class Arena {
     scene;
@@ -48,7 +49,7 @@ class Arena {
                 else if (i === 4) {
                     const greenMaterial = new StandardMaterial("greenMaterial", this.scene);
                     greenMaterial.specularColor = new Color3(0, 0, 0);
-                    greenMaterial.diffuseTexture = new Texture("../assets/images/sable-texture.jpg", this.scene);
+                    greenMaterial.diffuseTexture = new Texture(sableTexture, this.scene);
                     childMesh.material = greenMaterial;
                 }
 
@@ -64,7 +65,7 @@ class Arena {
         console.log(this.zoneSable);
         let zoneMat = new StandardMaterial("zoneSable", this.scene);
         zoneMat.specularColor = new Color3(0, 0, 0);
-        zoneMat.diffuseTexture = new Texture("../assets/images/sable-texture.jpg");
+        zoneMat.diffuseTexture = new Texture(sableTexture);
         this.zoneSable.material = zoneMat;
 
 
